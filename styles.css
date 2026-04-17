@@ -572,19 +572,33 @@ input, select, textarea { font-family: inherit; }
 .serve-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--charcoal-dk) 0%, var(--charcoal) 55%, #3a1a22 100%);
+  background-color: var(--charcoal-dk);
+  overflow: hidden;
 }
 .serve-overlay {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpolygon points='30,2 58,30 30,58 2,30' fill='none' stroke='rgba(201,168,76,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+  background: linear-gradient(
+    115deg,
+    rgba(10, 8, 8, 0.80) 0%,
+    rgba(140, 40, 60, 0.60) 50%,
+    rgba(180, 50, 70, 0.30) 100%
+  );
+  z-index: 1;
+}
+.serve-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpolygon points='40,2 78,40 40,78 2,40' fill='none' stroke='rgba(220,170,100,0.10)' stroke-width='1.2'/%3E%3Cpolygon points='40,14 66,40 40,66 14,40' fill='none' stroke='rgba(220,170,100,0.07)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='2' fill='rgba(220,170,100,0.12)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 .serve-header {
   text-align: center;
   margin-bottom: 64px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .serve-header .section-sub { margin: 0 auto; }
 
@@ -593,7 +607,7 @@ input, select, textarea { font-family: inherit; }
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .serve-card {
